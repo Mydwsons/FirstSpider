@@ -6,7 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/lib/jsoup-1.11.3.jar" sourcepath="D:/lib/jsoup-1.11.3-sources.jar"/>
-	<classpathentry kind="lib" path="D:/lib/jsoup-1.11.3-sources.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/lib/jsoup-1.11.3.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/lib/jsoup-1.11.3-sources.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/lib/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/lib/okhttp-3.11.0.jar"/>
+	<classpathentry kind="lib" path="D:/eclipse/lib/okio-1.15.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
