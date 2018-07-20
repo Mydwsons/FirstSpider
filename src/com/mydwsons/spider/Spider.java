@@ -69,21 +69,25 @@ public class Spider implements Runnable {
 
 				// 获取in数据
 				String seedUrl = item.select(".info .hd a").first().attr("href");
-				Connection seedConn = Jsoup.connect(seedUrl);
-				conn.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
-				conn.header("Accept-Encoding", "gzip, deflate, sdch");
-				conn.header("Accept-Language", "zh-CN,zh;q=0.8");
+				try {
+					Connection seedConn = Jsoup.connect(seedUrl);
+					conn.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+					conn.header("Accept-Encoding", "gzip, deflate, sdch");
+					conn.header("Accept-Language", "zh-CN,zh;q=0.8");
 
-				Document seedDoc = seedConn.header("User-Agent",
-						"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36")
-						.get();
+					Document seedDoc = seedConn.header("User-Agent",
+							"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36")
+							.get();
 
-				Elements seed = seedDoc.select("#info");
-				director = seed.select(".attrs a[rel$=v:directedBy]").text();
-				actor = seed.select(".actor .attrs").text();
-				type = seed.select("span[property$=v:genre]").text();
-				date = seed.select("span[property$=v:initialReleaseDate]").text();
-				min = seed.select("span[property$=v:runtime]").text();
+					Elements seed = seedDoc.select("#info");
+					director = seed.select(".attrs a[rel$=v:directedBy]").text();
+					actor = seed.select(".actor .attrs").text();
+					type = seed.select("span[property$=v:genre]").text();
+					date = seed.select("span[property$=v:initialReleaseDate]").text();
+					min = seed.select("span[property$=v:runtime]").text();
+
+				} catch (Exception e) {
+				}
 
 				Film film = new Film(id, title, score, num, quote, director, actor, type, date, min, path);
 
